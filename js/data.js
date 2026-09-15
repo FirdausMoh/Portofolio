@@ -28,7 +28,8 @@ const PORTFOLIO_DATA = {
     linkedin: "https://linkedin.com/in/mohfahri",  // TODO
     instagram: "https://instagram.com/",  // TODO
     github: "https://github.com/",        // TODO
-    cvFile: "assets/cv/CV_Moh_Fahri_Firdaus_Data_Visualization.pdf",
+    cvFile: "assets/cv/CV_Moh_Fahri_Firdaus_Data_Visualization.pdf.pdf",
+  
     photo: "assets/profile/profile.jpeg",
     heroHeadline: "Mengubah data menjadi Insight bisnis.",
     bio: "Lulusan Ilmu Komputer dari Telkom University dengan kompetensi di bidang Business Intelligence, Analisis & Visualisasi Data, Pengembangan Aplikasi & Web, UI/UX, serta Desain Grafis. Saat ini bekerja sebagai IT Design Specialist (BI & Data Visualization), dengan fokus mengubah data operasional menjadi dashboard intuitif dengan Power BI, guna mendukung pemangku kepentingan dalam melakukan pengambilan keputusan yang tepat dan menyusun strategi bisnis.\n\n Selain mengembangkan solusi Business Intelligence, saya memiliki pengalaman dalam digitalisasi dan pengembangan sistem internal, termasuk pembuatan aplikasi absensi karyawan menggunakan AppSheet dan pengembangan solusi berbasis web menggunakan Laravel. Saya juga berpengalaman dalam mengelola, memproses, dan menganalisis data ERP untuk mendukung kebutuhan operasional serta menyediakan informasi yang lebih terstruktur bagi proses bisnis. Saya mampu mengintegrasikan data, teknologi, dan kebutuhan bisnis untuk menghadirkan solusi yang meningkatkan efisiensi operasional serta mendukung transformasi digital perusahaan.",
