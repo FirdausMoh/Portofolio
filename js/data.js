@@ -28,7 +28,7 @@ const PORTFOLIO_DATA = {
     linkedin: "https://linkedin.com/in/mohfahri",  // TODO
     instagram: "https://instagram.com/",  // TODO
     github: "https://github.com/",        // TODO
-    cvFile: "assets/cv/CV_Moh_Fahri_Firdaus_Data_Visualization.pdf.pdf",
+    cvFile: "assets/cv/CV_Moh_Fahri_Firdaus_Data_Visualization.pdf",
   
     photo: "assets/profile/profile.jpeg",
     heroHeadline: "Mengubah data menjadi Insight bisnis.",
