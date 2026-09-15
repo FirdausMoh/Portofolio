@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moh Fahri Firdaus — IT Design &amp; BI Developer</title>
+<meta name="description" content="Portofolio Moh Fahri Firdaus — Data Analyst & Visualization, UI/UX & Web Developer.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============================= NAVBAR ============================= -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#top" class="nav__brand">Portofolio<span>.</span>Fahri</a>
+
+    <nav class="nav__links" id="navLinks">
+      <a href="#tentang">Tentang</a>
+      <a href="#pengalaman">Pengalaman</a>
+      <a href="#proyek">Proyek</a>
+      <a href="#sertifikasi">Sertifikasi</a>
+      <a href="#kontak" class="nav__cta">Hubungi Saya</a>
+    </nav>
+
+    <button class="nav__toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============================= HERO ============================= -->
+  <section class="hero">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <div class="hero__text">
+        <p class="hero__role" id="heroRole"></p>
+        <h1 class="hero__headline" id="heroHeadline"></h1>
+        <p class="hero__tagline" id="heroTagline"></p>
+
+        <div class="hero__actions">
+          <a href="#proyek" class="btn btn--primary">Lihat Proyek</a>
+          <a href="#kontak" class="btn btn--ghost">Hubungi Saya</a>
+        </div>
+
+        <div class="hero__stats" id="heroStats"></div>
+      </div>
+
+      <div class="hero__figure">
+        <div class="hero__photo-wrap">
+          <img id="heroPhoto" src="" alt="Foto Moh Fahri Firdaus" class="hero__photo">
+        </div>
+        <div class="hero__badge">Moh Fahri Firdaus</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= TENTANG ============================= -->
+  <section class="section" id="tentang">
+    <div class="section__inner about">
+      <div class="section__head">
+        <h2>Tentang Saya</h2>
+      </div>
+      <div class="about__grid">
+        <p class="about__bio" id="aboutBio"></p>
+        <div class="about__focus" id="aboutFocus"></div>
+      </div>
+
+      <div class="skills" id="skillsWrap"></div>
+    </div>
+  </section>
+
+  <!-- ============================= PENGALAMAN ============================= -->
+  <section class="section section--alt" id="pengalaman">
+    <div class="section__inner">
+      <div class="section__head">
+        <h2>Pengalaman Kerja</h2>
+      </div>
+      <div class="timeline" id="experienceTimeline"></div>
+    </div>
+  </section>
+
+  <!-- ============================= PENDIDIKAN & ORGANISASI ============================= -->
+  <section class="section" id="pendidikan">
+    <div class="section__inner edu">
+      <div class="section__head">
+        <h2>Pendidikan &amp; Organisasi</h2>
+      </div>
+      <div class="edu__grid">
+        <div class="edu__card" id="educationCard"></div>
+        <div class="edu__orgs" id="organizationsList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= PROYEK ============================= -->
+  <section class="section section--alt" id="proyek">
+    <div class="section__inner">
+      <div class="section__head">
+        <h2>Proyek Pilihan</h2>
+        <div class="filters" id="projectFilters">
+          <button class="filter is-active" data-filter="all">Semua</button>
+          <button class="filter" data-filter="bi">Data &amp; BI</button>
+          <button class="filter" data-filter="uiux">UI/UX / App Dev</button>
+          <button class="filter" data-filter="design">Desain Grafis</button>
+        </div>
+      </div>
+      <div class="projects" id="projectsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============================= SERTIFIKASI ============================= -->
+  <section class="section" id="sertifikasi">
+    <div class="section__inner">
+      <div class="section__head">
+        <h2>Sertifikasi</h2>
+      </div>
+      <div class="certs" id="certsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============================= WHY ME ============================= -->
+  <section class="section section--alt" id="whyme">
+    <div class="section__inner">
+      <div class="section__head">
+        <h2>Mengapa Memilih Saya?</h2>
+      </div>
+      <div class="whyme" id="whyMeGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============================= KONTAK ============================= -->
+  <section class="section contact" id="kontak">
+    <div class="section__inner contact__inner">
+      <h2>Tertarik untuk berkolaborasi?</h2>
+      <p>Terbuka untuk diskusi proyek Business Intelligence, Data Analytics, UI/UX, maupun Web/App Development.</p>
+      <div class="contact__actions" id="contactActions"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <span id="footerName"></span>
+    <span class="footer__dot">&middot;</span>
+    <span id="footerLocation"></span>
+    <span class="footer__copy">&copy; <span id="footerYear"></span></span>
+  </div>
+</footer>
+
+<!-- Lightbox untuk gambar sertifikat -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox__close" id="lightboxClose" aria-label="Tutup">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<!-- Pop-up detail proyek dengan carousel gambar -->
+<div class="project-modal" id="projectModal" aria-hidden="true">
+  <div class="project-modal__backdrop" data-close-modal></div>
+  <div class="project-modal__panel" role="dialog" aria-modal="true">
+    <button class="project-modal__close" id="projectModalClose" aria-label="Tutup detail proyek">&times;</button>
+
+    <div class="carousel">
+      <div class="carousel__viewport">
+        <div class="carousel__track" id="carouselTrack"></div>
+      </div>
+      <button class="carousel__nav carousel__nav--prev" id="carouselPrev" aria-label="Gambar sebelumnya">&#10094;</button>
+      <button class="carousel__nav carousel__nav--next" id="carouselNext" aria-label="Gambar berikutnya">&#10095;</button>
+      <div class="carousel__counter" id="carouselCounter"></div>
+    </div>
+    <div class="carousel__dots" id="carouselDots"></div>
+    <p class="carousel__caption" id="carouselCaption"></p>
+
+    <div class="project-modal__body">
+      <span class="project-modal__tag" id="modalTag"></span>
+      <h3 id="modalTitle"></h3>
+      <dl id="modalDetail"></dl>
+    </div>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
