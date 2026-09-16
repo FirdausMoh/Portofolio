@@ -369,7 +369,7 @@ const PORTFOLIO_DATA = {
       images: [
         { src: "assets/projects/design/product bag.png", caption: "Product Design" },
         { src: "assets/projects/design/label-sammix.jpg", caption: "Stiker Label Produk" },
-        { src: "assets/projects/design/label-p01.jpg", caption: "Stiker Label Produk" },
+        { src: "assets/projects/design/label-po1.jpg", caption: "Stiker Label Produk" },
       ],
      challenge: "1. Kebutuhan label kemasan yang tidak hanya menarik secara visual, tetapi juga wajib memuat informasi teknis produk secara rinci, jelas, dan sesuai standar industri.\n2. Keterbatasan area/ruang pada stiker kemasan untuk menata elemen branding, komposisi, petunjuk penggunaan, serta informasi legalitas tanpa terlihat padat dan berantakan.\n3. Kurangnya daya tarik visual pada kemasan produk terdahulu yang berpotensi menurunkan daya saing di mata customer lama maupun calon customer.",
      solution: "1. Merancang tata letak (layout) label stiker terstruktur dengan hierarki visual yang jelas antara nama produk, fungsi utama, dan detail instruksi teknis.\n2. Mengoptimalkan tipografi, ikon grafis intuitif, dan kontras warna untuk memastikan informasi penting mudah dibaca meskipun dalam ukuran kemasan yang terbatas.\n3. Mengintegrasikan identitas visual brand (logo, skema warna, dan elemen khas) guna memperkuat *brand recognition* dan memberikan kesan produk yang profesional serta terpercaya.",
