@@ -9,6 +9,11 @@
 <meta name="theme-color" content="#0A1220">
 <!-- Terapkan tema sebelum halaman digambar (mencegah kedipan) -->
 <script>
+  function renderAll() {
+  // kode lama kamu yang membaca PORTFOLIO_DATA
+}
+renderAll();
+window.addEventListener("portfolio-lang-change", renderAll);
 (function(){
   var t=null;
   try{ t=localStorage.getItem('portfolio-theme'); }catch(e){}
@@ -41,6 +46,8 @@
     </nav>
 
     <div class="nav__tools">
+      <button onclick="setPortfolioLang('id')">ID</button>
+      <button onclick="setPortfolioLang('en')">EN</button>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Beralih ke mode terang" title="Beralih ke mode terang">
         <svg class="theme-toggle__sun" viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="12" cy="12" r="4"/>
