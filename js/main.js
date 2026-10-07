@@ -1,11 +1,96 @@
 /**
- * =====================================================================
- *  MAIN.JS — merender PORTFOLIO_DATA (dari data.js) ke halaman.
- *  Tidak perlu diedit untuk menambah konten — cukup ubah data.js.
- * =====================================================================
+ * MAIN.JS — merender PORTFOLIO_DATA (data.js) ke halaman, dwibahasa ID/EN.
+ * Konten diubah di data.js. Label statis (menu, judul section, tombol)
+ * diubah di kamus UI di bawah.
  */
 (function(){
-  const D = PORTFOLIO_DATA;
+  let D = PORTFOLIO_DATA;
+  let lang = getPortfolioLang();
+
+  /* ---------------------------------------------------------------
+   * KAMUS LABEL UI
+   * -------------------------------------------------------------- */
+  const UI = {
+    en: {
+      'meta.title': 'Moh Fahri Firdaus — IT Design & BI Developer',
+      'meta.desc': 'Portfolio of Moh Fahri Firdaus — Data Analyst & Visualization, UI/UX & Web Developer.',
+      'nav.about': 'About me', 'nav.experience': 'Professional Experience', 'nav.projects': 'Projects',
+      'nav.certs': 'Certifications', 'nav.contact': 'Contact me',
+      'hero.projects': 'Projects', 'hero.contact': 'Contact me',
+      'sec.about': 'About me', 'sec.experience': 'Professional Experience', 'sec.edu': 'Education & Organization',
+      'sec.projects': 'Projects', 'sec.certs': 'Certifications', 'sec.why': 'Why Choose Me',
+      'filter.all': 'All', 'filter.bi': 'Data & BI', 'filter.uiux': 'UI/UX / App Dev', 'filter.design': 'Graphic Design',
+      'contact.title': "Let's Work Together",
+      'contact.text': 'Open to collaboration on Business Intelligence, Data Analytics, UI/UX, and Web/App Development projects.',
+      'edu.period': 'Period', 'edu.gpa': 'GPA', 'edu.final': 'Final Project', 'edu.cert': 'Certification',
+      'proj.view': 'View project details', 'proj.photos': 'photos', 'proj.viewAria': 'View project details: ',
+      'modal.challenge': 'Challenge', 'modal.solution': 'Solution', 'modal.impact': 'Impact',
+      'link.view': 'View', 'link.doc': 'Document', 'link.proto': 'Prototype',
+      'btn.email': 'Send Email', 'btn.cv': 'Download CV',
+      'aria.menu': 'Open menu', 'aria.closeProject': 'Close project details', 'aria.prev': 'Previous image',
+      'aria.next': 'Next image', 'aria.close': 'Close', 'aria.goTo': 'Go to image ',
+      'aria.toDark': 'Switch to dark mode', 'aria.toLight': 'Switch to light mode'
+    },
+    id: {
+      'meta.title': 'Moh Fahri Firdaus — IT Design & BI Developer',
+      'meta.desc': 'Portofolio Moh Fahri Firdaus — Data Analyst & Visualization, UI/UX & Web Developer.',
+      'nav.about': 'Tentang Saya', 'nav.experience': 'Pengalaman Profesional', 'nav.projects': 'Proyek',
+      'nav.certs': 'Sertifikasi', 'nav.contact': 'Hubungi Saya',
+      'hero.projects': 'Proyek', 'hero.contact': 'Hubungi Saya',
+      'sec.about': 'Tentang Saya', 'sec.experience': 'Pengalaman Profesional', 'sec.edu': 'Pendidikan & Organisasi',
+      'sec.projects': 'Proyek', 'sec.certs': 'Sertifikasi', 'sec.why': 'Mengapa Memilih Saya',
+      'filter.all': 'Semua', 'filter.bi': 'Data & BI', 'filter.uiux': 'UI/UX / App Dev', 'filter.design': 'Desain Grafis',
+      'contact.title': 'Mari Bekerja Sama',
+      'contact.text': 'Terbuka untuk kolaborasi proyek Business Intelligence, Data Analytics, UI/UX, dan pengembangan Web/App.',
+      'edu.period': 'Periode', 'edu.gpa': 'IPK', 'edu.final': 'Tugas Akhir', 'edu.cert': 'Sertifikasi',
+      'proj.view': 'Lihat detail proyek', 'proj.photos': 'foto', 'proj.viewAria': 'Lihat detail proyek ',
+      'modal.challenge': 'Tantangan', 'modal.solution': 'Solusi', 'modal.impact': 'Hasil',
+      'link.view': 'Lihat', 'link.doc': 'Dokumen', 'link.proto': 'Prototype',
+      'btn.email': 'Kirim Email', 'btn.cv': 'Unduh CV',
+      'aria.menu': 'Buka menu', 'aria.closeProject': 'Tutup detail proyek', 'aria.prev': 'Gambar sebelumnya',
+      'aria.next': 'Gambar berikutnya', 'aria.close': 'Tutup', 'aria.goTo': 'Ke gambar ',
+      'aria.toDark': 'Beralih ke mode gelap', 'aria.toLight': 'Beralih ke mode terang'
+    }
+  };
+  const t = (key) => (UI[lang] && UI[lang][key]) || UI.en[key] || key;
+
+  // Elemen statis di index.html -> kunci kamus (tidak perlu edit HTML)
+  const STATIC_TEXT = [
+    ['#navLinks a[href="#tentang"]', 'nav.about'], ['#navLinks a[href="#pengalaman"]', 'nav.experience'],
+    ['#navLinks a[href="#proyek"]', 'nav.projects'], ['#navLinks a[href="#sertifikasi"]', 'nav.certs'],
+    ['#navLinks a[href="#kontak"]', 'nav.contact'],
+    ['.hero__actions .btn--primary', 'hero.projects'], ['.hero__actions .btn--ghost', 'hero.contact'],
+    ['#tentang h2', 'sec.about'], ['#pengalaman h2', 'sec.experience'], ['#pendidikan h2', 'sec.edu'],
+    ['#proyek h2', 'sec.projects'], ['#sertifikasi h2', 'sec.certs'], ['#whyme h2', 'sec.why'],
+    ['#kontak h2', 'contact.title'], ['#kontak .contact__inner > p', 'contact.text'],
+    ['.filter[data-filter="all"]', 'filter.all'], ['.filter[data-filter="bi"]', 'filter.bi'],
+    ['.filter[data-filter="uiux"]', 'filter.uiux'], ['.filter[data-filter="design"]', 'filter.design']
+  ];
+  const STATIC_ARIA = [
+    ['#navToggle', 'aria.menu'], ['#projectModalClose', 'aria.closeProject'],
+    ['#carouselPrev', 'aria.prev'], ['#carouselNext', 'aria.next'], ['#lightboxClose', 'aria.close']
+  ];
+
+  function applyStatic(){
+    document.documentElement.lang = lang;
+    document.title = t('meta.title');
+    const md = document.querySelector('meta[name="description"]');
+    if (md) md.setAttribute('content', t('meta.desc'));
+    STATIC_TEXT.forEach(([sel, key]) => {
+      const n = document.querySelector(sel);
+      if (n) n.textContent = t(key);
+    });
+    STATIC_ARIA.forEach(([sel, key]) => {
+      const n = document.querySelector(sel);
+      if (n) n.setAttribute('aria-label', t(key));
+    });
+    document.querySelectorAll('[data-lang]').forEach(b => {
+      const on = b.dataset.lang === lang;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-pressed', on);
+    });
+    refreshThemeLabel();
+  }
 
   /* ---------------------------------------------------------------
    * Util kecil
@@ -30,11 +115,8 @@
     }
     return wrap;
   };
-  function renderAll() {
-  // semua kode render yang sekarang ada di main.js
-}
-renderAll();
-window.addEventListener("portfolio-lang-change", renderAll);
+
+  const clear = (id) => { const n = document.getElementById(id); n.innerHTML = ''; return n; };
 
   /* ---------------------------------------------------------------
    * HERO
@@ -47,7 +129,7 @@ window.addEventListener("portfolio-lang-change", renderAll);
     document.getElementById('heroPhoto').src = p.photo;
     document.getElementById('heroPhoto').alt = p.name;
 
-    const statsWrap = document.getElementById('heroStats');
+    const statsWrap = clear('heroStats');
     p.stats.forEach(s => {
       const item = el('div', 'hero__stat');
       item.appendChild(el('div', 'hero__stat-value', `${s.value}<span>${s.suffix || ''}</span>`));
@@ -62,15 +144,15 @@ window.addEventListener("portfolio-lang-change", renderAll);
   function renderAbout(){
     document.getElementById('aboutBio').textContent = D.profile.bio;
 
-    const focusWrap = document.getElementById('aboutFocus');
+    const focusWrap = clear('aboutFocus');
     D.profile.focusAreas.forEach(f => {
       const card = el('div', 'focus-card');
       card.appendChild(el('h4', null, f.title));
-      card.appendChild(el('p', null, f.desc));
+      if (f.desc) card.appendChild(el('p', null, f.desc));
       focusWrap.appendChild(card);
     });
 
-    const skillsWrap = document.getElementById('skillsWrap');
+    const skillsWrap = clear('skillsWrap');
     D.skills.forEach(group => {
       const g = el('div', 'skill-group');
       g.appendChild(el('h4', null, group.group));
@@ -85,12 +167,10 @@ window.addEventListener("portfolio-lang-change", renderAll);
    * EXPERIENCE TIMELINE
    * -------------------------------------------------------------- */
   function renderExperience(){
-    const wrap = document.getElementById('experienceTimeline');
+    const wrap = clear('experienceTimeline');
     D.experience.forEach(exp => {
       const item = el('div', 'timeline-item reveal');
-
-      const media = safeImg(exp.image, exp.company, 'timeline-item__media');
-      item.appendChild(media);
+      item.appendChild(safeImg(exp.image, exp.company, 'timeline-item__media'));
 
       const body = el('div', 'timeline-item__body');
       body.appendChild(el('span', 'timeline-item__period', exp.period));
@@ -109,23 +189,23 @@ window.addEventListener("portfolio-lang-change", renderAll);
    * EDUCATION & ORGANIZATIONS
    * -------------------------------------------------------------- */
   function renderEducation(){
-    const eduWrap = document.getElementById('educationCard');
+    const eduWrap = clear('educationCard');
     const e = D.education;
     eduWrap.appendChild(el('h3', null, e.school));
     eduWrap.appendChild(el('span', 'edu__degree', e.degree));
 
     const meta = el('div', 'edu__meta');
-    meta.appendChild(el('div', null, `<span class="label">Periode</span><span class="value">${e.period}</span>`));
-    meta.appendChild(el('div', null, `<span class="label">IPK</span><span class="value">${e.gpa}</span>`));
+    meta.appendChild(el('div', null, `<span class="label">${t('edu.period')}</span><span class="value">${e.period}</span>`));
+    meta.appendChild(el('div', null, `<span class="label">${t('edu.gpa')}</span><span class="value">${e.gpa}</span>`));
     eduWrap.appendChild(meta);
 
-    eduWrap.appendChild(el('span', 'edu__label', 'Tugas Akhir'));
+    eduWrap.appendChild(el('span', 'edu__label', t('edu.final')));
     eduWrap.appendChild(el('p', null, e.finalProject));
 
-    eduWrap.appendChild(el('span', 'edu__label', 'Sertifikasi'));
+    eduWrap.appendChild(el('span', 'edu__label', t('edu.cert')));
     eduWrap.appendChild(el('span', null, e.certification));
 
-    const orgWrap = document.getElementById('organizationsList');
+    const orgWrap = clear('organizationsList');
     D.organizations.forEach(org => {
       const card = el('div', 'org-card reveal');
       card.appendChild(safeImg(org.image, org.org, 'org-card__media'));
@@ -145,65 +225,65 @@ window.addEventListener("portfolio-lang-change", renderAll);
   /* ---------------------------------------------------------------
    * PROJECTS
    * -------------------------------------------------------------- */
+  let currentFilter = 'all';
+
   function renderProjects(){
-    const grid = document.getElementById('projectsGrid');
+    const grid = clear('projectsGrid');
+    const list = currentFilter === 'all' ? D.projects : D.projects.filter(p => p.category === currentFilter);
 
-    function draw(filter){
-      grid.innerHTML = '';
-      const list = filter === 'all' ? D.projects : D.projects.filter(p => p.category === filter);
-      list.forEach((proj) => {
-        const card = el('article', 'project-card reveal');
-        card.tabIndex = 0;
-        card.setAttribute('role', 'button');
-        card.setAttribute('aria-label', `Lihat detail proyek ${proj.title}`);
+    list.forEach((proj) => {
+      const card = el('article', 'project-card reveal');
+      card.tabIndex = 0;
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', `${t('proj.viewAria')}${proj.title}`);
 
-        const media = el('div', 'project-card__media');
-        const img = el('img');
-        const firstImg = proj.images && proj.images[0];
-        img.src = (typeof firstImg === 'string' ? firstImg : firstImg && firstImg.src) || proj.image || '';
-        img.alt = proj.title;
-        img.loading = 'lazy';
-        media.appendChild(img);
-        card.appendChild(media);
+      const media = el('div', 'project-card__media');
+      const img = el('img');
+      const firstImg = proj.images && proj.images[0];
+      img.src = (typeof firstImg === 'string' ? firstImg : firstImg && firstImg.src) || proj.image || '';
+      img.alt = proj.title;
+      img.loading = 'lazy';
+      media.appendChild(img);
+      card.appendChild(media);
 
-        const body = el('div', 'project-card__body');
-        body.appendChild(el('span', 'project-card__tag', proj.tag));
-        body.appendChild(el('h3', 'project-card__title', proj.title));
+      const body = el('div', 'project-card__body');
+      body.appendChild(el('span', 'project-card__tag', proj.tag));
+      body.appendChild(el('h3', 'project-card__title', proj.title));
 
-        const imgCount = (proj.images || []).length;
-        const toggleLabel = imgCount > 1
-          ? `Lihat detail proyek <span class="chev">&#9662;</span> <span class="project-card__count">${imgCount} foto</span>`
-          : 'Lihat detail proyek <span class="chev">&#9662;</span>';
-        const toggle = el('button', 'project-card__toggle', toggleLabel);
-        toggle.type = 'button';
-        body.appendChild(toggle);
+      const imgCount = (proj.images || []).length;
+      const toggleLabel = imgCount > 1
+        ? `${t('proj.view')} <span class="chev">&#9662;</span> <span class="project-card__count">${imgCount} ${t('proj.photos')}</span>`
+        : `${t('proj.view')} <span class="chev">&#9662;</span>`;
+      const toggle = el('button', 'project-card__toggle', toggleLabel);
+      toggle.type = 'button';
+      body.appendChild(toggle);
+      card.appendChild(body);
 
-        card.appendChild(body);
-
-        const open = () => openProjectModal(proj);
-        card.addEventListener('click', open);
-        card.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(); }
-        });
-
-        grid.appendChild(card);
-        requestAnimationFrame(() => observeReveal(card));
+      const open = () => openProjectModal(proj);
+      card.addEventListener('click', open);
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(); }
       });
-    }
 
-    draw('all');
+      grid.appendChild(card);
+      requestAnimationFrame(() => observeReveal(card));
+    });
+  }
 
+  // Listener filter dipasang SEKALI (bukan di setiap render)
+  function initFilters(){
     document.querySelectorAll('.filter').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter').forEach(b => b.classList.remove('is-active'));
         btn.classList.add('is-active');
-        draw(btn.dataset.filter);
+        currentFilter = btn.dataset.filter;
+        renderProjects();
       });
     });
   }
 
   /* ---------------------------------------------------------------
-   * PROJECT MODAL — pop-up detail proyek dengan carousel gambar
+   * PROJECT MODAL
    * -------------------------------------------------------------- */
   const projectModal = document.getElementById('projectModal');
   const carouselTrack = document.getElementById('carouselTrack');
@@ -213,10 +293,9 @@ window.addEventListener("portfolio-lang-change", renderAll);
   const carouselCounter = document.getElementById('carouselCounter');
   const carouselCaption = document.getElementById('carouselCaption');
   let carouselIndex = 0;
-  let carouselImages = []; // selalu dinormalisasi jadi [{src, caption}, ...]
+  let carouselImages = [];
+  let openProjectIdx = -1;   // indeks proyek yang sedang terbuka (untuk ganti bahasa)
 
-  // Menerima "images" dalam bentuk string biasa ATAU object {src, caption},
-  // lalu menyeragamkannya jadi {src, caption} supaya render-nya konsisten.
   function normalizeImages(images){
     return (images || []).map(img =>
       typeof img === 'string' ? { src: img, caption: '' } : { src: img.src, caption: img.caption || '' }
@@ -246,6 +325,7 @@ window.addEventListener("portfolio-lang-change", renderAll);
   }
 
   function openProjectModal(proj){
+    openProjectIdx = D.projects.indexOf(proj);
     carouselImages = normalizeImages(proj.images && proj.images.length ? proj.images : (proj.image ? [proj.image] : []));
     carouselIndex = 0;
 
@@ -261,7 +341,7 @@ window.addEventListener("portfolio-lang-change", renderAll);
     carouselImages.forEach((_, i) => {
       const dot = el('button');
       dot.type = 'button';
-      dot.setAttribute('aria-label', `Ke gambar ${i + 1}`);
+      dot.setAttribute('aria-label', `${t('aria.goTo')}${i + 1}`);
       dot.addEventListener('click', () => goToSlide(i));
       carouselDots.appendChild(dot);
     });
@@ -269,60 +349,49 @@ window.addEventListener("portfolio-lang-change", renderAll);
     document.getElementById('modalTag').textContent = proj.tag;
     document.getElementById('modalTitle').textContent = proj.title;
 
-const dl = document.getElementById('modalDetail');
-dl.innerHTML = '';
+    const dl = document.getElementById('modalDetail');
+    dl.innerHTML = '';
 
-[['Tantangan','challenge'],['Solusi','solution'],['Hasil','impact']].forEach(([label, key]) => {
-  if (proj[key]){
-    dl.appendChild(el('dt', null, label));
-    const dd = el('dd');
+    [['modal.challenge','challenge'],['modal.solution','solution'],['modal.impact','impact']].forEach(([labelKey, key]) => {
+      if (proj[key]){
+        dl.appendChild(el('dt', null, t(labelKey)));
+        const dd = el('dd');
 
-    if (typeof proj[key] === 'string') {
-      // Split string berdasarkan pola angka di depan kalimat (misal: " 2. ", " 3. ")
-      const items = proj[key]
-        .split(/(?=\s*\d+\.\s+)/)
-        .map(item => item.replace(/^\s*\d+\.\s*/, '').trim())
-        .filter(Boolean);
+        if (typeof proj[key] === 'string') {
+          // Pecah teks bernomor ("1. ... 2. ...") menjadi daftar
+          const items = proj[key]
+            .split(/(?=\s*\d+\.\s+)/)
+            .map(item => item.replace(/^\s*\d+\.\s*/, '').trim())
+            .filter(Boolean);
 
-      if (items.length > 1) {
-        const ol = el('ol', 'project-list');
-        items.forEach(text => {
-          const li = el('li', null, text);
-          ol.appendChild(li);
-        });
-        dd.appendChild(ol);
-      } else {
-        dd.textContent = proj[key];
+          if (items.length > 1) {
+            const ol = el('ol', 'project-list');
+            items.forEach(text => ol.appendChild(el('li', null, text)));
+            dd.appendChild(ol);
+          } else {
+            dd.textContent = proj[key];
+          }
+        }
+        dl.appendChild(dd);
       }
-    }
+    });
 
-    dl.appendChild(dd);
-  }
-});
+    [['link.doc', 'Link2'], ['link.proto', 'Link']].forEach(([labelKey, key]) => {
+      if (proj[key]) {
+        const label = t(labelKey);
+        dl.appendChild(el('dt', null, label));
+        const dd = el('dd');
+        const a = document.createElement('a');
+        a.href = proj[key];
+        a.textContent = `${t('link.view')} ${label}`;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.className = 'project-link';
+        dd.appendChild(a);
+        dl.appendChild(dd);
+      }
+    });
 
-// Links
-const links = [
-  ['Dokumen', 'Link2'],
-  ['Prototype', 'Link']
-];
-
-links.forEach(([label, key]) => {
-  if (proj[key]) {
-    dl.appendChild(el('dt', null, label));
-
-    const dd = el('dd');
-    const a = document.createElement('a');
-
-    a.href = proj[key];
-    a.textContent = `Lihat ${label}`;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    a.className = 'project-link';
-
-    dd.appendChild(a);
-    dl.appendChild(dd);
-  }
-});
     renderCarousel();
     projectModal.classList.add('is-open');
     projectModal.setAttribute('aria-hidden', 'false');
@@ -330,9 +399,18 @@ links.forEach(([label, key]) => {
   }
 
   function closeProjectModal(){
+    openProjectIdx = -1;
     projectModal.classList.remove('is-open');
     projectModal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+  }
+
+  // Jika modal sedang terbuka saat bahasa diganti, render ulang isinya
+  function refreshOpenModal(){
+    if (openProjectIdx < 0 || !projectModal.classList.contains('is-open')) return;
+    const keep = carouselIndex;
+    openProjectModal(D.projects[openProjectIdx]);
+    goToSlide(keep);
   }
 
   carouselPrev.addEventListener('click', () => goToSlide(carouselIndex - 1));
@@ -346,7 +424,6 @@ links.forEach(([label, key]) => {
     if (e.key === 'ArrowRight') goToSlide(carouselIndex + 1);
   });
 
-  // Swipe dasar untuk layar sentuh
   (function initSwipe(){
     let startX = 0;
     const viewport = document.querySelector('.carousel__viewport');
@@ -363,7 +440,7 @@ links.forEach(([label, key]) => {
    * CERTIFICATIONS
    * -------------------------------------------------------------- */
   function renderCerts(){
-    const grid = document.getElementById('certsGrid');
+    const grid = clear('certsGrid');
     D.certifications.forEach(cert => {
       const card = el('div', 'cert-card reveal');
       const media = el('div', 'cert-card__media');
@@ -393,7 +470,7 @@ links.forEach(([label, key]) => {
    * WHY ME
    * -------------------------------------------------------------- */
   function renderWhyMe(){
-    const grid = document.getElementById('whyMeGrid');
+    const grid = clear('whyMeGrid');
     D.whyMe.forEach(item => {
       const card = el('div', 'whyme-card reveal');
       card.appendChild(el('h3', null, item.title));
@@ -407,9 +484,9 @@ links.forEach(([label, key]) => {
    * -------------------------------------------------------------- */
   function renderContact(){
     const p = D.profile;
-    const wrap = document.getElementById('contactActions');
+    const wrap = clear('contactActions');
 
-    const mail = el('a', 'btn btn--primary', `Kirim Email`);
+    const mail = el('a', 'btn btn--primary', t('btn.email'));
     mail.href = `mailto:${p.email}`;
     wrap.appendChild(mail);
 
@@ -421,7 +498,7 @@ links.forEach(([label, key]) => {
       wrap.appendChild(li);
     }
     if (p.cvFile){
-      const cv = el('a', 'btn btn--ghost', 'Unduh CV');
+      const cv = el('a', 'btn btn--ghost', t('btn.cv'));
       cv.href = p.cvFile;
       cv.setAttribute('download', '');
       wrap.appendChild(cv);
@@ -453,7 +530,7 @@ links.forEach(([label, key]) => {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 
   /* ---------------------------------------------------------------
-   * NAV (mobile toggle + active link on scroll)
+   * NAV
    * -------------------------------------------------------------- */
   function initNav(){
     const toggle = document.getElementById('navToggle');
@@ -471,7 +548,7 @@ links.forEach(([label, key]) => {
   }
 
   /* ---------------------------------------------------------------
-   * SCROLL REVEAL (satu observer terkoordinasi)
+   * SCROLL REVEAL
    * -------------------------------------------------------------- */
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -482,20 +559,14 @@ links.forEach(([label, key]) => {
     });
   }, { threshold: 0.12 });
 
-  function observeReveal(node){
-    revealObserver.observe(node);
-  }
-
-  function initRevealAll(){
-    document.querySelectorAll('.reveal').forEach(observeReveal);
-  }
+  function observeReveal(node){ revealObserver.observe(node); }
+  function initRevealAll(){ document.querySelectorAll('.reveal').forEach(observeReveal); }
 
   /* ---------------------------------------------------------------
    * THEME — mode terang / gelap
-   * Urutan prioritas: pilihan pengunjung (tersimpan) > pengaturan sistem.
-   * Untuk memaksa gelap sebagai bawaan, ubah FALLBACK_THEME dan hapus
-   * bagian prefers-color-scheme di <head> index.html.
    * -------------------------------------------------------------- */
+  let refreshThemeLabel = () => {};
+
   function initTheme(){
     const KEY = 'portfolio-theme';
     const root = document.documentElement;
@@ -506,13 +577,17 @@ links.forEach(([label, key]) => {
 
     const saved = () => { try { return localStorage.getItem(KEY); } catch(e){ return null; } };
 
-    function apply(theme){
-      const light = theme === 'light';
-      root.setAttribute('data-theme', theme);
-      if (meta) meta.setAttribute('content', light ? '#F4F7FB' : '#0A1220');
-      const label = light ? 'Beralih ke mode gelap' : 'Beralih ke mode terang';
+    refreshThemeLabel = function(){
+      const light = root.getAttribute('data-theme') === 'light';
+      const label = light ? t('aria.toDark') : t('aria.toLight');
       btn.setAttribute('aria-label', label);
       btn.title = label;
+    };
+
+    function apply(theme){
+      root.setAttribute('data-theme', theme);
+      if (meta) meta.setAttribute('content', theme === 'light' ? '#F4F7FB' : '#0A1220');
+      refreshThemeLabel();
     }
 
     apply(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
@@ -526,22 +601,13 @@ links.forEach(([label, key]) => {
       timer = setTimeout(() => root.classList.remove('theme-anim'), 450);
     });
 
-    // Ikuti perubahan tema sistem selama pengunjung belum memilih sendiri
     const onSystem = (e) => { if (!saved()) apply(e.matches ? 'light' : 'dark'); };
     if (mq.addEventListener) mq.addEventListener('change', onSystem);
     else if (mq.addListener) mq.addListener(onSystem);
   }
 
   /* ---------------------------------------------------------------
-   * PARALLAX
-   * Elemen dengan atribut:
-   *   data-speed  -> geser saat scroll. Positif = terasa lebih lambat
-   *                  (di belakang), negatif = lebih cepat (di depan).
-   *   data-depth  -> geser mengikuti gerak mouse (hanya perangkat mouse).
-   *   data-origin="top" -> hitung dari awal section (dipakai di hero).
-   * Memakai properti CSS `translate` supaya tidak bentrok dengan
-   * `transform` lain (hover, reveal, badge). Nonaktif otomatis bila
-   * pengunjung memilih "reduce motion".
+   * PARALLAX (tidak berubah)
    * -------------------------------------------------------------- */
   function initParallax(){
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -555,9 +621,7 @@ links.forEach(([label, key]) => {
       fromTop: node.dataset.origin === 'top'
     }));
 
-    let tx = 0, ty = 0;   // target mouse (-0.5 .. 0.5)
-    let cx = 0, cy = 0;   // posisi mouse yang dihaluskan
-    let queued = false;
+    let tx = 0, ty = 0, cx = 0, cy = 0, queued = false;
 
     function reset(){ items.forEach(it => { it.node.style.translate = ''; }); }
 
@@ -572,7 +636,7 @@ links.forEach(([label, key]) => {
 
       items.forEach(it => {
         const r = it.root.getBoundingClientRect();
-        if (r.bottom < -300 || r.top > vh + 300) return;   // di luar layar
+        if (r.bottom < -300 || r.top > vh + 300) return;
         const offset = it.fromTop ? -r.top : -(r.top + r.height / 2 - vh / 2);
         const y = offset * it.speed * scale + cy * it.depth;
         const x = cx * it.depth;
@@ -605,18 +669,34 @@ links.forEach(([label, key]) => {
   }
 
   /* ---------------------------------------------------------------
-   * INIT
+   * RENDER ULANG SEMUA (dipanggil saat awal & saat bahasa diganti)
    * -------------------------------------------------------------- */
-  renderHero();
-  renderAbout();
-  renderExperience();
-  renderEducation();
-  renderProjects();
-  renderCerts();
-  renderWhyMe();
-  renderContact();
-  initNav();
-  initRevealAll();
+  function renderAll(){
+    D = PORTFOLIO_DATA;
+    lang = getPortfolioLang();
+    applyStatic();
+    renderHero();
+    renderAbout();
+    renderExperience();
+    renderEducation();
+    renderProjects();
+    renderCerts();
+    renderWhyMe();
+    renderContact();
+    initRevealAll();
+    refreshOpenModal();
+  }
+
+  /* ---------------------------------------------------------------
+   * INIT (sekali saja)
+   * -------------------------------------------------------------- */
   initTheme();
+  initNav();
+  initFilters();
+  document.querySelectorAll('[data-lang]').forEach(b => {
+    b.addEventListener('click', () => setPortfolioLang(b.dataset.lang));
+  });
+  window.addEventListener('portfolio-lang-change', renderAll);
+  renderAll();
   initParallax();
 })();
