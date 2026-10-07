@@ -30,6 +30,11 @@
     }
     return wrap;
   };
+  function renderAll() {
+  // semua kode render yang sekarang ada di main.js
+}
+renderAll();
+window.addEventListener("portfolio-lang-change", renderAll);
 
   /* ---------------------------------------------------------------
    * HERO
