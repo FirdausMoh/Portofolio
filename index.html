@@ -41,8 +41,10 @@
     </nav>
 
     <div class="nav__tools">
-      <button onclick="setPortfolioLang('id')">ID</button>
-      <button onclick="setPortfolioLang('en')">EN</button>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="id" type="button">ID</button>
+        <button class="lang-btn" data-lang="en" type="button">EN</button>
+      </div>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Beralih ke mode terang" title="Beralih ke mode terang">
         <svg class="theme-toggle__sun" viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="12" cy="12" r="4"/>
