@@ -157,6 +157,10 @@ ul{ margin:0; padding:0; list-style:none; }
 /* =====================================================================
    NAVBAR
 ===================================================================== */
+.lang-switch { display: inline-flex; gap: 4px; }
+.lang-btn { padding: 6px 10px; border-radius: 8px; border: 1px solid transparent;
+  background: transparent; color: inherit; font-weight: 600; cursor: pointer; opacity: .6; }
+.lang-btn.is-active { opacity: 1; border-color: currentColor; }
 .nav{
   position:sticky;
   top:0;
