@@ -254,7 +254,7 @@ const PORTFOLIO_DATA_RAW = {
     },
     {
       category: "uiux",
-      tag: "UI/UX & App Dev",
+      tag: "App Dev",
       title: "Technical Sales Monitoring & Visit Tracking System — AppSheet",
       images: [
         { src: "assets/projects/uiux/Nama Karyawan (3).png", caption: L("Aplikasi Tracking dan Absensi Technical Sales", "Technical Sales Tracking & Attendance App") },
@@ -298,7 +298,7 @@ const PORTFOLIO_DATA_RAW = {
     },
     {
       category: "uiux",
-      tag: "UI/UX & Web",
+      tag: "UI/UX & Web Dev",
       title: "Inventory Application Design — PLN UID Jawa Timur",
       images: [
         { src: "assets/projects/uiux/pln-inv.png", caption: L("Dashboard Inventori — Ringkasan Stok", "Inventory Dashboard — Stock Summary") },
