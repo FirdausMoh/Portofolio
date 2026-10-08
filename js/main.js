@@ -1,8 +1,3 @@
-/**
- * MAIN.JS — merender PORTFOLIO_DATA (data.js) ke halaman, dwibahasa ID/EN.
- * Konten diubah di data.js. Label statis (menu, judul section, tombol)
- * diubah di kamus UI di bawah.
- */
 (function(){
   let D = PORTFOLIO_DATA;
   let lang = getPortfolioLang();

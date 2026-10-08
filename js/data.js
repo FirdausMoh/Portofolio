@@ -1,17 +1,3 @@
-/**
- * =====================================================================
- *  PORTFOLIO DATA — BILINGUAL (Indonesia / English)
- * =====================================================================
- *  Setiap teks yang perlu diterjemahkan ditulis dengan:
- *      L("teks Indonesia", "English text")
- *  Field non-teks (gambar, link, nama tools, dll) ditulis biasa.
- *
- *  Bahasa default = English. Ganti dengan setPortfolioLang("id" | "en").
- *  Pilihan bahasa disimpan di localStorage.
- * =====================================================================
- */
-
-/* ------------------------- i18n helpers ------------------------- */
 const L = (id, en) => ({ id, en });
 
 function localizePortfolio(node, lang) {
@@ -41,8 +27,8 @@ const PORTFOLIO_DATA_RAW = {
     github: "https://github.com/",        // TODO
     cvFile: "https://drive.google.com/file/d/1azjSUlM4QKJT6XMl_nWY581ZZr9ijLeu/view?usp=drivesdk",
 
-    photo: "assets/profile/profile.jpeg",
-    heroHeadline: L("Mengubah data menjadi Insight bisnis.", "Turning data into business insight."),
+    photo: "assets/profile/PROFILE.png",
+    heroHeadline: L("Data Visualization & Application Developer", "Data Visualization & Application Developer"),
     bio: L(
       "Lulusan Ilmu Komputer dari Telkom University dengan kompetensi di bidang Business Intelligence, Analisis & Visualisasi Data, Pengembangan Aplikasi & Web, UI/UX, serta Desain Grafis. Saat ini bekerja sebagai IT Design Specialist (BI & Data Visualization), dengan fokus mengubah data operasional menjadi dashboard intuitif dengan Power BI, guna mendukung pemangku kepentingan dalam melakukan pengambilan keputusan yang tepat dan menyusun strategi bisnis.\n\n Selain mengembangkan solusi Business Intelligence, saya memiliki pengalaman dalam digitalisasi dan pengembangan sistem internal, termasuk pembuatan aplikasi absensi karyawan menggunakan AppSheet dan pengembangan solusi berbasis web menggunakan Laravel. Saya juga berpengalaman dalam mengelola, memproses, dan menganalisis data ERP untuk mendukung kebutuhan operasional serta menyediakan informasi yang lebih terstruktur bagi proses bisnis. Saya mampu mengintegrasikan data, teknologi, dan kebutuhan bisnis untuk menghadirkan solusi yang meningkatkan efisiensi operasional serta mendukung transformasi digital perusahaan.",
       "Computer Science graduate from Telkom University with expertise in Business Intelligence, Data Analysis & Visualization, Application & Web Development, UI/UX, and Graphic Design. Currently working as an IT Design Specialist (BI & Data Visualization), focused on turning operational data into intuitive Power BI dashboards that help stakeholders make sound decisions and shape business strategy.\n\n Beyond Business Intelligence solutions, I have experience in digitalizing and developing internal systems, including an employee attendance app built with AppSheet and web-based solutions built with Laravel. I am also experienced in managing, processing, and analyzing ERP data to support operational needs and provide more structured information for business processes. I integrate data, technology, and business requirements to deliver solutions that improve operational efficiency and support the company's digital transformation."
@@ -57,8 +43,8 @@ const PORTFOLIO_DATA_RAW = {
         value: " Computer Science",
         suffix: " | 3.65/4.00",
         label: L(
-          "Telkom University (2021-2025) | Fast Track (Selesai dalam 7 Semester)",
-          "Telkom University (2021-2025) | Fast Track (Completed in 7 Semesters)"
+          "Telkom University (2021-2025) | Fast Track ",
+          "Telkom University (2021-2025) | Fast Track "
         )
       }
     ]
@@ -71,28 +57,32 @@ const PORTFOLIO_DATA_RAW = {
       period: L("Okt 2025 — Sekarang", "Oct 2025 — Present"),
       image: "assets/experience/exp-provitex.png",
       bullets: [
-        L("Business Intelligence & Analytics: pengembangan dashboard Power BI, visualisasi & storytelling data, pelaporan operasional dengan Microsoft Office.",
-          "Business Intelligence & Analytics: Power BI dashboard development, data visualization & storytelling, and operational reporting with Microsoft Office."),
-        L("App Development: membangun aplikasi mobile internal menggunakan AppSheet.",
-          "App Development: building internal mobile applications with AppSheet."),
+        L("Business Intelligence & Analytics: merancang dashboard Power BI end-to-end untuk 7 divisi sebagai acuan rapat mingguan Deputy Director dan kepala divisi, memantau penjualan, omzet, dan produksi.",
+          "Business Intelligence & Analytics: designed end-to-end Power BI dashboards for 7 divisions, serving as the reference for weekly meetings of the Deputy Director and division heads to monitor sales, revenue, and production."),
+        L("DAX & Forecasting: membangun measure DAX untuk forecasting pembelian bahan baku, perbandingan performa sales, analisis retensi customer, perbandingan revenue bulanan antar tahun, dan pengawasan expiry produk untuk mendukung penerapan FEFO.",
+          "DAX & Forecasting: built DAX measures for raw material purchase forecasting, sales performance comparison, customer retention analysis, year-over-year monthly revenue comparison, and product expiry monitoring to support FEFO implementation."),
+        L("Data Integration: mengintegrasikan 14 sumber data (11 file Excel dan 3 tarikan data Accurate ERP) menjadi satu laporan terpusat, menggantikan laporan yang tersebar di banyak file dan sheet.",
+          "Data Integration: consolidated 14 data sources (11 Excel files and 3 Accurate ERP extracts) into a single centralized report, replacing reports previously scattered across many files and sheets."),
+        L("Business Impact: mempermudah tracking retensi customer dan pemantauan kredit/pembayaran, serta membuat keputusan purchasing lebih akurat dan cepat.",
+          "Business Impact: simplified customer retention tracking and credit/payment monitoring, enabling faster and more accurate purchasing decisions."),
+        L("App Development: membangun aplikasi mobile AppSheet untuk absensi dan monitoring tim sales lapangan di 3 provinsi.",
+          "App Development: built an AppSheet mobile app for attendance and monitoring of the field sales team across 3 provinces."),
         L("Graphic Design: desain visual korporat, komunikasi visual, dan pembuatan aset grafis.",
           "Graphic Design: corporate visual design, visual communication, and graphic asset creation."),
-        L("Data Management: input dan pengelolaan data ERP Accurate.",
-          "Data Management: data entry and management in Accurate ERP.")
+        L("Data Management: mengelola pencatatan inventaris end-to-end di Accurate ERP untuk menjaga akurasi pergerakan stok bahan baku di gudang berkapasitas 32 ton; inisiatif dashboard produksi dan stok real-time ini yang membawa saya pindah ke tim IT.",
+          "Data Management: managed end-to-end inventory recording in Accurate ERP to keep raw material stock movement accurate in a 32-ton capacity warehouse; the real-time production and stock dashboard I initiated led to my move to the IT team.")
       ]
     },
     {
       role: "Information Technology Staff Intern",
       company: "PT PLN (Persero)",
-      period: "2024",
+      period: L("Mei 2024 — Agu 2024", "May 2024 — Aug 2024"),
       image: "assets/experience/image.png",
       bullets: [
-        L("User-Centered Design (UCD): wireframing, high-fidelity prototyping, interactive mockups, information architecture.",
-          "User-Centered Design (UCD): wireframing, high-fidelity prototyping, interactive mockups, information architecture."),
-        L("Usability & UX Strategy: usability testing, user flow mapping, workflow optimization.",
-          "Usability & UX Strategy: usability testing, user flow mapping, workflow optimization."),
-        L("Technical Collaboration: developer handoff, translasi desain UI/UX, penyelarasan spesifikasi fungsional.",
-          "Technical Collaboration: developer handoff, translating UI/UX designs, and aligning functional specifications.")
+        L("UX Research: menganalisis alur kerja pengguna pada proyek aplikasi manajemen inventaris (tim 3 orang).",
+          "UX Research: analyzed user workflows on an inventory management application project (3-person team)."),
+        L("Technical Documentation: menyusun dokumentasi teknis dan pemetaan alur kerja digital.",
+          "Technical Documentation: prepared technical documentation and digital workflow mapping.")
       ]
     }
   ],
@@ -100,7 +90,7 @@ const PORTFOLIO_DATA_RAW = {
   education: {
     school: "Telkom University",
     degree: L("S1 Computer Science", "Bachelor of Computer Science"),
-    period: L("Okt 2021 — Feb 2025 (jalur akselerasi, 3.5 tahun)", "Oct 2021 — Feb 2025 (accelerated track, 3.5 years)"),
+    period: L("Okt 2021 — Feb 2025 (jalur akselerasi)", "Oct 2021 — Feb 2025 (accelerated track)"),
     gpa: "3.65 / 4.00",
     finalProject: "Usability Evaluation and Redesign of the UI/UX of the Suara Surabaya Mobile Application with Heuristic Evaluation and Double Diamond Model.",
     certification: "English Proficiency : Professional Proficiency (EPRT® Certified)"

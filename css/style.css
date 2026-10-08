@@ -320,8 +320,8 @@ ul{ margin:0; padding:0; list-style:none; }
   overflow:hidden;
 }
 .hero__photo{
-  width:88%;
-  object-fit:contain;
+  width:98%;
+  object-fit:cover;
   object-position:bottom;
 }
 .hero__badge{
