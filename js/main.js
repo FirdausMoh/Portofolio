@@ -20,7 +20,7 @@
       'edu.period': 'Period', 'edu.gpa': 'GPA', 'edu.final': 'Final Project', 'edu.cert': 'Certification',
       'proj.view': 'View project details', 'proj.photos': 'photos', 'proj.viewAria': 'View project details: ',
       'modal.challenge': 'Challenge', 'modal.solution': 'Solution', 'modal.impact': 'Impact',
-      'link.view': 'View', 'link.doc': 'Document', 'link.proto': 'Prototype',
+      'link.view': 'View', 'link.doc': 'Document', 'link.proto': 'Prototype/Code',
       'btn.email': 'Send Email', 'btn.cv': 'Download CV',
       'aria.menu': 'Open menu', 'aria.closeProject': 'Close project details', 'aria.prev': 'Previous image',
       'aria.next': 'Next image', 'aria.close': 'Close', 'aria.goTo': 'Go to image ',

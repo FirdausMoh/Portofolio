@@ -20,12 +20,12 @@ const PORTFOLIO_DATA_RAW = {
     role: "Currently as IT Designer & BI Developer",
     tagline: "Data Analyst & Visualization | UI/UX & Web Developer | Graphic Design",
     location: "Surabaya, Jawa Timur",
-    email: "fahriwork58@email.com",     // TODO: ganti dengan email aktif
+    email: "fahriwork58@gmail.com",     // TODO: ganti dengan email aktif
     phone: "+62 822 2985 0927",
     linkedin: "https://linkedin.com/in/mohfahri",  // TODO
     instagram: "https://instagram.com/",  // TODO
-    github: "https://github.com/",        // TODO
-    cvFile: "https://drive.google.com/file/d/1azjSUlM4QKJT6XMl_nWY581ZZr9ijLeu/view?usp=drivesdk",
+    github: "https://github.com/FirdausMoh",        // TODO
+    cvFile: "https://drive.google.com/file/d/1Z5bsGvFmFho2xSQi3YtN8izR1Z2PdjlG/view?usp=drive_link",
 
     photo: "assets/profile/PROFILE.png",
     heroHeadline: L("Data Visualization & Application Developer", "Data Visualization & Application Developer"),
@@ -69,8 +69,8 @@ const PORTFOLIO_DATA_RAW = {
           "App Development: built an AppSheet mobile app for attendance and monitoring of the field sales team across 3 provinces."),
         L("Graphic Design: desain visual korporat, komunikasi visual, dan pembuatan aset grafis.",
           "Graphic Design: corporate visual design, visual communication, and graphic asset creation."),
-        L("Data Management: mengelola pencatatan inventaris end-to-end di Accurate ERP untuk menjaga akurasi pergerakan stok bahan baku di gudang berkapasitas 32 ton; inisiatif dashboard produksi dan stok real-time ini yang membawa saya pindah ke tim IT.",
-          "Data Management: managed end-to-end inventory recording in Accurate ERP to keep raw material stock movement accurate in a 32-ton capacity warehouse; the real-time production and stock dashboard I initiated led to my move to the IT team.")
+        L("Data Management: mengelola pencatatan inventaris end-to-end di Accurate ERP untuk menjaga akurasi pergerakan stok bahan baku di gudang dengan kapasitas 32 ton;",
+          "Data Management: managed end-to-end inventory recording in Accurate ERP to keep raw material stock movement accurate in a 32-ton capacity warehouse;")
       ]
     },
     {
@@ -79,11 +79,15 @@ const PORTFOLIO_DATA_RAW = {
       period: L("Mei 2024 — Agu 2024", "May 2024 — Aug 2024"),
       image: "assets/experience/image.png",
       bullets: [
-        L("UX Research: menganalisis alur kerja pengguna pada proyek aplikasi manajemen inventaris (tim 3 orang).",
-          "UX Research: analyzed user workflows on an inventory management application project (3-person team)."),
-        L("Technical Documentation: menyusun dokumentasi teknis dan pemetaan alur kerja digital.",
-          "Technical Documentation: prepared technical documentation and digital workflow mapping.")
-      ]
+    L("UX Research: menganalisis alur kerja pengguna pada proyek aplikasi manajemen inventaris (tim 3 orang).",
+      "UX Research: analyzed user workflows on an inventory management application project (3-person team)."),
+    L("UI/UX Design: merancang desain antarmuka dan pengalaman pengguna aplikasi sebelum masuk tahap pengembangan.",
+      "UI/UX Design: designed the application's interface and user experience before development began."),
+    L("Front-End Development: mengimplementasikan desain UI/UX menjadi tampilan front-end pada aplikasi berbasis Laravel.",
+      "Front-End Development: implemented the UI/UX designs as the front end of a Laravel-based application."),
+    L("Technical Documentation: menyusun dokumentasi teknis dan pemetaan alur kerja digital.",
+      "Technical Documentation: prepared technical documentation and digital workflow mapping.")
+  ]
     }
   ],
 
@@ -306,7 +310,7 @@ const PORTFOLIO_DATA_RAW = {
         "The resulting design became the official foundation for developing the PLN UID Jawa Timur inventory application, with an interface structure validated for usability before development began. Close collaboration between design and the developer team ensured the final application stayed aligned with field users' needs, not just visual appearance."
       ),
       Link2: "https://docs.google.com/presentation/d/1o-JpyLMx9Cr8ViX7gOlB0s4ndCssx_9s/edit?usp=sharing&ouid=116256117308600244457&rtpof=true&sd=true",
-      Link: "https://www.figma.com/proto/a0VL9UMT9BVMdjqpnw4ACX/KERJA-PRAKTEK?node-id=1-6627&t=yU0lDLi1jprx5AW7-1&scaling=contain&content-scaling=fixed&page-id=1%3A5461"
+      Link: "https://www.figma.com/proto/btB5YaVsQGrrEDb7TvYStS/inventory-PLN-UID-Jatim?node-id=13-13520&p=f&t=NRVb7xvxy0nixC4H-1&scaling=contain&content-scaling=fixed&page-id=13%3A13482"
     },
     {
       category: "uiux",
@@ -351,8 +355,8 @@ const PORTFOLIO_DATA_RAW = {
         "Melalui beberapa sprint iterasi, tim berhasil menghasilkan prototipe aplikasi e-commerce yang fungsional untuk mendukung penjualan material bangunan Subur Jaya — mencakup alur belanja end-to-end dari autentikasi hingga transaksi. Proyek ini menjadi pengalaman langsung merangkap peran mobile developer, sekaligus pemimpin tim dalam siklus pengembangan produk yang agile.",
         "Through several sprint iterations, the team produced a functional e-commerce app prototype to support Subur Jaya's building material sales — covering the end-to-end shopping flow from authentication to transaction. This project was hands-on experience as a mobile developer and team leader in an agile product development cycle."
       ),
-      Link2: "https://github.com/FirdausMoh/E-COMMERCE-TOKO-BANGUNAN.git",
-      Link: "https://drive.google.com/file/d/1cNMCCZ2Dc4RCERX8uJmB8SAgug7bTIwd/view?usp=sharing",
+      Link: "https://github.com/FirdausMoh/E-COMMERCE-TOKO-BANGUNAN.git",
+      Link2: "https://drive.google.com/file/d/1cNMCCZ2Dc4RCERX8uJmB8SAgug7bTIwd/view?usp=sharing",
     },
     {
       category: "uiux",
