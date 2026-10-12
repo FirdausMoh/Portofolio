@@ -27,7 +27,7 @@ const PORTFOLIO_DATA_RAW = {
     github: "https://github.com/FirdausMoh",        // TODO
     cvFile: "https://drive.google.com/file/d/1Z5bsGvFmFho2xSQi3YtN8izR1Z2PdjlG/view?usp=drive_link",
 
-    photo: "assets/profile/PROFILE.png",
+    photo: "assets/profile/profile.png",
     heroHeadline: L("Data Visualization & Application Developer", "Data Visualization & Application Developer"),
     bio: L(
       "Lulusan Ilmu Komputer dari Telkom University dengan kompetensi di bidang Business Intelligence, Analisis & Visualisasi Data, Pengembangan Aplikasi & Web, UI/UX, serta Desain Grafis. Saat ini bekerja sebagai IT Design Specialist (BI & Data Visualization), dengan fokus mengubah data operasional menjadi dashboard intuitif dengan Power BI, guna mendukung pemangku kepentingan dalam melakukan pengambilan keputusan yang tepat dan menyusun strategi bisnis.\n\n Selain mengembangkan solusi Business Intelligence, saya memiliki pengalaman dalam digitalisasi dan pengembangan sistem internal, termasuk pembuatan aplikasi absensi karyawan menggunakan AppSheet dan pengembangan solusi berbasis web menggunakan Laravel. Saya juga berpengalaman dalam mengelola, memproses, dan menganalisis data ERP untuk mendukung kebutuhan operasional serta menyediakan informasi yang lebih terstruktur bagi proses bisnis. Saya mampu mengintegrasikan data, teknologi, dan kebutuhan bisnis untuk menghadirkan solusi yang meningkatkan efisiensi operasional serta mendukung transformasi digital perusahaan.",
