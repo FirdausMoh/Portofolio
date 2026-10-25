@@ -25,7 +25,7 @@ const PORTFOLIO_DATA_RAW = {
     linkedin: "https://linkedin.com/in/mohfahri",  // TODO
     instagram: "https://instagram.com/",  // TODO
     github: "https://github.com/FirdausMoh",        // TODO
-    cvFile: "https://drive.google.com/file/d/1Z5bsGvFmFho2xSQi3YtN8izR1Z2PdjlG/view?usp=drive_link",
+    cvFile: "https://drive.google.com/file/d/1Z5bsGvFmFho2xSQi3YtN8izR1Z2PdjlG/view?usp=sharing",
 
     photo: "assets/profile/profile.png",
     heroHeadline: L("Data Visualization & Application Developer", "Data Visualization & Application Developer"),
